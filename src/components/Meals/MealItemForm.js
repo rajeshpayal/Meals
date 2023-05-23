@@ -26,7 +26,6 @@ const MealItemForm = (props) => {
           type="number"
           min="1"
           max="5"
-          defaultValue={"1"}
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
