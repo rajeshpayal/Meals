@@ -12,7 +12,7 @@ const AvailableMeals = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(url)
+      .get(`${url}/meals.json`)
       .then((response) => {
         const { data } = response;
         const loadedMeals = [];
