@@ -45,6 +45,7 @@ const Checkout = (props) => {
       })
       .finally(() => {
         setSendingRequest(false);
+        cartctx.clearCart();
         nameRef.current.value = "";
         streetRef.current.value = "";
         postalCodeRef.current.value = "";
@@ -52,6 +53,14 @@ const Checkout = (props) => {
       });
 
     console.log({ name, street, city, postalCode });
+  };
+
+  const tryHandler = () => {
+    setError({ isError: false, errorMsg: "" });
+    nameRef.current.value = "";
+    streetRef.current.value = "";
+    postalCodeRef.current.value = "";
+    cityRef.current.value = "";
   };
 
   return (
@@ -81,7 +90,11 @@ const Checkout = (props) => {
             {sendingRequest ? "sending" : "Confirm"}
           </button>
         )}
-        {error.isError && <button className={classes.submit}>Try Again</button>}
+        {error.isError && (
+          <button className={classes.submit} onClick={tryHandler}>
+            Try Again
+          </button>
+        )}
       </div>
     </form>
   );
