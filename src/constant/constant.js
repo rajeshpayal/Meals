@@ -1,2 +1,2 @@
 export const url =
-  "https://postdatamovie-default-rtdb.firebaseio.com";
+  "https://newmeal-192e7-default-rtdb.firebaseio.com";
