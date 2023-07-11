@@ -4,6 +4,8 @@ import Modal from "../UI/Modal";
 import CartContext from "../../store/cart-context";
 import CartItem from "./CartItem";
 import Checkout from "./Checkout";
+import { toast } from 'react-toastify';
+import AddShoppingCartSharpIcon from '@mui/icons-material/AddShoppingCartSharp';
 const Cart = (props) => {
   const [isCheckoutShown, setIsCheckoutShown] = useState(false);
   const cartctx = useContext(CartContext);
@@ -13,10 +15,14 @@ const Cart = (props) => {
   };
 
   const cartItemRemove = (id) => {
+    toast("Meal is removed from cart")
     cartctx.removeItem(id);
   };
 
   const cartItemAdd = (item) => {
+    toast("Meal is added to cart", {
+      icon: <AddShoppingCartSharpIcon />
+    })
     cartctx.addItem({ ...item, amount: 1 });
   };
 
@@ -41,6 +47,7 @@ const Cart = (props) => {
   const hasItems = cartctx.items.length > 0;
   return (
     <Modal closeModal={props.closeModal}>
+
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>

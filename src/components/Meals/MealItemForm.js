@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import classes from "./MealItemForm.module.css";
+import { toast } from 'react-toastify';
 
 const MealItemForm = (props) => {
   // amount is the numbers of quanity of an item
@@ -11,8 +12,12 @@ const MealItemForm = (props) => {
     event.preventDefault();
     if (amount < 1 || amount > 5) {
       setError(true);
+      toast.error("Quantity must be greater than zero")
       return;
     }
+    toast.success("Meal is added to cart")
+    setError(false)
+
     props.onAddToCart(numItem + Number(amount));
   };
 
@@ -24,7 +29,6 @@ const MealItemForm = (props) => {
           label="Amount"
           id="amount"
           type="number"
-          min="1"
           max="5"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}

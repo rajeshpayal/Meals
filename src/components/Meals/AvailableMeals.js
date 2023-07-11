@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import classes from "./AvailableMeals.module.css";
-import { ThreeDots } from "react-loader-spinner";
+
 import Card from "../UI/Card";
 import MealItem from "./MealItem";
 import axios from "axios";
 import { url } from "../../constant/constant";
+
+
 const AvailableMeals = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState({ isError: false, errorMsg: "" });
+
   useEffect(() => {
     setLoading(true);
     axios

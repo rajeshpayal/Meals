@@ -8,8 +8,8 @@ const Header = (props) => {
   return (
     <>
       <header className={classes.header}>
-        <h1>ReactMeals</h1>
-        <HeaderCartButton openModal={props.openModal}/>
+        <h1>Meal</h1>
+        <HeaderCartButton openModal={props.openModal} />
       </header>
       <div className={classes["main-image"]}>
         <img src={mealsImage} alt="meals" />

@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react";
 import classes from "./Checkout.module.css";
 import axios from "axios";
 import { url } from "../../constant/constant";
+import { toast } from 'react-toastify';
 import CartContext from "../../store/cart-context";
 
 const Checkout = (props) => {
@@ -25,9 +26,11 @@ const Checkout = (props) => {
       city.trim() === "" ||
       postalCode.trim() === ""
     ) {
+      toast.error("Please enter the address");
       return;
     }
     setSendingRequest(true);
+    toast.info("Order Placing")
     axios
       .post(`${url}/orders.json`, {
         name,
@@ -41,18 +44,19 @@ const Checkout = (props) => {
         console.log(response);
       })
       .catch(function (error) {
+        toast.error("Something went wrong")
         setError({ isError: true, message: error.message });
       })
       .finally(() => {
+        toast.success("Order is placed successfully", { delay: 1000 })
         setSendingRequest(false);
+        props.onCancel()
         cartctx.clearCart();
         nameRef.current.value = "";
         streetRef.current.value = "";
         postalCodeRef.current.value = "";
         cityRef.current.value = "";
       });
-
-    console.log({ name, street, city, postalCode });
   };
 
   const tryHandler = () => {

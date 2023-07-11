@@ -1,0 +1,50 @@
+#main {
+  display: flex;
+  flex-direction: column;
+}
+#editing-page {
+  display: flex;
+  flex-direction: row;
+}
+#tabs-section {
+  min-width: 25rem;
+  padding: 1rem;
+  border: 2px solid;
+}
+#selection {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+}
+.tabs {
+  display: flex;
+  flex-direction: column;
+  min-width: 5rem;
+  min-height: 2rem;
+  border: 1px solid;
+  margin: 5px;
+  padding: 5px;
+  line-height: 0.5rem;
+}
+input {
+  min-height: 6rem;
+}
+p {
+  min-height: 1rem;
+}
+button {
+  min-width: 1rem;
+  min-height: 1rem;
+}
+.choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  /* align-items: center; */
+  min-width: 20rem;
+  min-height: 30rem;
+  border: 2px solid;
+  margin: 2rem;
+  padding: 1rem;
+}
